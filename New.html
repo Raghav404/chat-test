@@ -32,7 +32,8 @@
         se.text = request.responseText; 
         document.getElementsByTagName('head')[0].appendChild(se); 
         //alert("end of loadScript\n");
-    } 
+    }
+    loadScript("/soap/ajax/53.0/connection.js");
 
                     
     var initESW = function(gslbBaseURL) {
@@ -67,7 +68,6 @@
                         e.preventDefault();
                         console.log('Email Transcript Clicked');
                         var emailTranscript = true;
-                        loadScript("/soap/ajax/53.0/connection.js"); 
                         sforce.connection.sessionId = '{!$Api.Session_ID}';
                         console.log(sforce.connection.sessionId);
                         var test = sforce.apex.execute("CheckEmailTranscript","checkEmailTranscript",{chatkey: data.liveAgentSessionKey});
@@ -93,7 +93,6 @@
                     btn.addEventListener("click", function (e){
                         e.preventDefault();
                         console.log('Email Transcript Clicked');
-                        loadScript("/soap/ajax/53.0/connection.js"); 
                         sforce.connection.sessionId = '{!$Api.Session_ID}';
                         console.log(sforce.connection.sessionId);
                         var test = sforce.apex.execute("CheckEmailTranscript","checkEmailTranscript",{chatkey: data.liveAgentSessionKey});
