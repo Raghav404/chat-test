@@ -2,7 +2,6 @@
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <!--<script src="/soap/ajax/53.0/connection.js" type="text/javascript"></script>-->
 <script src="/soap/ajax/53.0/apex.js" type="text/javascript"></script>
-{!REQUIRESCRIPT("/soap/ajax/53.0/connection.js")}
     
 <script type='text/javascript'>
 
@@ -140,5 +139,5 @@
         initESW('https://service.force.com');
     }
 </script>
-<body></body>
+<body>{!REQUIRESCRIPT("/soap/ajax/53.0/connection.js")}</body>
 </html>
