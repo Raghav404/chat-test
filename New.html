@@ -4,8 +4,6 @@
 <script src="/soap/ajax/53.0/apex.js" type="text/javascript"></script>
     
 <script type='text/javascript'>
-    
-    {!requireScript("/soap/ajax/53.0/connection.js")}
 
     //function to fetch JWT token
     function fetchToken() {
@@ -48,6 +46,7 @@
                         e.preventDefault();
                         console.log('Email Transcript Clicked');
                         var emailTranscript = true;
+                        {!requireScript("/soap/ajax/53.0/connection.js")}
                         sforce.connection.sessionId = '{!$Api.Session_ID}';
                         console.log(sforce.connection.sessionId);
                         var test = sforce.apex.execute("CheckEmailTranscript","checkEmailTranscript",{chatkey: data.liveAgentSessionKey});
@@ -73,6 +72,7 @@
                     btn.addEventListener("click", function (e){
                         e.preventDefault();
                         console.log('Email Transcript Clicked');
+                        {!requireScript("/soap/ajax/53.0/connection.js")}
                         sforce.connection.sessionId = '{!$Api.Session_ID}';
                         console.log(sforce.connection.sessionId);
                         var test = sforce.apex.execute("CheckEmailTranscript","checkEmailTranscript",{chatkey: data.liveAgentSessionKey});
