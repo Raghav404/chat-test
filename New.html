@@ -46,7 +46,7 @@
                         e.preventDefault();
                         console.log('Email Transcript Clicked');
                         var emailTranscript = true;
-                        {!requireScript("/soap/ajax/53.0/connection.js")}
+                        {!REQUIRESCRIPT("/soap/ajax/53.0/connection.js")}
                         sforce.connection.sessionId = '{!$Api.Session_ID}';
                         console.log(sforce.connection.sessionId);
                         var test = sforce.apex.execute("CheckEmailTranscript","checkEmailTranscript",{chatkey: data.liveAgentSessionKey});
@@ -72,7 +72,7 @@
                     btn.addEventListener("click", function (e){
                         e.preventDefault();
                         console.log('Email Transcript Clicked');
-                        {!requireScript("/soap/ajax/53.0/connection.js")}
+                        {!REQUIRESCRIPT("/soap/ajax/53.0/connection.js")}
                         sforce.connection.sessionId = '{!$Api.Session_ID}';
                         console.log(sforce.connection.sessionId);
                         var test = sforce.apex.execute("CheckEmailTranscript","checkEmailTranscript",{chatkey: data.liveAgentSessionKey});
