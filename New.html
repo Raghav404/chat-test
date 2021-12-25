@@ -64,11 +64,11 @@
                     btn.addEventListener("click", function (e){
                         e.preventDefault();
                         console.log('Email Transcript Clicked');
-                        var emailTranscript = true;
-                        sforce.connection.sessionId = '{!$Api.Session_ID}';
-                        console.log(sforce.connection.sessionId);
-                        var test = sforce.apex.execute("CheckEmailTranscript","checkEmailTranscript",{chatkey: data.liveAgentSessionKey});
-                        console.log(test);
+                        embedded_svc.liveAgentAPI.sendCustomEvent("Customer_to_agent_event_type","data from the customer");
+                        //sforce.connection.sessionId = '{!$Api.Session_ID}';
+                        //console.log(sforce.connection.sessionId);
+                        //var test = sforce.apex.execute("CheckEmailTranscript","checkEmailTranscript",{chatkey: data.liveAgentSessionKey});
+                        //console.log(test);
                         btn.disabled = true;
                         alert("You will be emailed shortly");
                     });
@@ -90,10 +90,11 @@
                     btn.addEventListener("click", function (e){
                         e.preventDefault();
                         console.log('Email Transcript Clicked');
-                        sforce.connection.sessionId = '{!$Api.Session_ID}';
-                        console.log(sforce.connection.sessionId);
-                        var test = sforce.apex.execute("CheckEmailTranscript","checkEmailTranscript",{chatkey: data.liveAgentSessionKey});
-                        console.log(test);
+                        embedded_svc.liveAgentAPI.sendCustomEvent("Customer_to_agent_event_type","data from the customer");
+                        //sforce.connection.sessionId = '{!$Api.Session_ID}';
+                        //console.log(sforce.connection.sessionId);
+                        //var test = sforce.apex.execute("CheckEmailTranscript","checkEmailTranscript",{chatkey: data.liveAgentSessionKey});
+                        //console.log(test);
                         btn.disabled = true;
                         alert("You will be emailed shortly");
                         });
