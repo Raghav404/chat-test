@@ -64,11 +64,31 @@
                     btn.addEventListener("click", function (e){
                         e.preventDefault();
                         console.log('Email Transcript Clicked');
-                        embedded_svc.liveAgentAPI.sendCustomEvent("Customer_to_agent_event_type","data from the customer");
+                        //embedded_svc.liveAgentAPI.sendCustomEvent("Customer_to_agent_event_type","data from the customer");
                         //sforce.connection.sessionId = '{!$Api.Session_ID}';
                         //console.log(sforce.connection.sessionId);
                         //var test = sforce.apex.execute("CheckEmailTranscript","checkEmailTranscript",{chatkey: data.liveAgentSessionKey});
                         //console.log(test);
+                        const formData = new FormData();
+                        const fileField = document.querySelector('input[type="file"]');
+
+                        formData.append('username', 'abc123');
+                        formData.append('avatar', fileField.files[0]);
+
+                        fetch('https://cs94.salesforce.com/services/apexrest/LiveChatTranscript', {
+                          method: 'PUT',
+                          headers: {
+                            'Content-Type': 'application/json'
+                          },
+                          body: JSON.stringify(data.liveAgentSessionKey)
+                        })
+                        .then(response => response.json())
+                        .then(result => {
+                          console.log('Success:', result);
+                        })
+                        .catch(error => {
+                          console.error('Error:', error);
+                        });
                         btn.disabled = true;
                         alert("You will be emailed shortly");
                     });
