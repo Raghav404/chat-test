@@ -1,5 +1,6 @@
 <html>
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>   
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jsforce/1.9.1/jsforce.min.js"></script>
 <script type='text/javascript'>
 
     //function to fetch JWT token
@@ -10,27 +11,6 @@
         tokenString = JSON.stringify({"nonce":"123456","id_token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNjkxNzMiLCJhdWQiOiJhMzRjZmI2Mi0xYzhjLTRiZDEtOTYxYy0xYzYwNmRiNWMzNTYiLCJqdGkiOiJSbndMYlgybkUzaGRlRHlLOHA5Y0FSIiwiaXNzIjoiaHR0cHM6Ly9ucGUtZXh0LmJsdWVzaGllbGRjYS5jb20iLCJpYXQiOjE2Mjg3MDY4OTMsImV4cCI6MTYyODcwNzE5MywiYXV0aF90aW1lIjoxNjI4NzA2ODkzLCJmaXJzdE5hbWUiOiJlcmljIiwibGFzdE5hbWUiOiJuaWV2YSIsInByb2ZpbGVJZCI6IjI2OTE3MyIsImVtYWlsIjoiZnJlZGVyaWNrLm5pZXZhQGJsdWVzaGllbGRjYS5jb20iLCJwaS5zcmkiOiI2MlNIS0RxMllaZVo1cDBoNW96MjZXUjRGQlkuLkZCZzkiLCJub25jZSI6IjEyMzQ1NiJ9.vTsiQ8QyskMZ2eLq2yoA977_axcgX9C58i0UfhCYBmQ"});
         return tokenString;        
     }
-    function loadScript(url){ 
-        var request; 
-        if (window.XMLHttpRequest){ 
-            request = new XMLHttpRequest(); 
-        }     
-        else if (window.ActiveXObject){ 
-            request = new ActiveXObject("Msxml2.XMLHTTP"); 
-            if (!request) { 
-                request = new ActiveXObject("Microsoft.XMLHTTP"); 
-            } 
-        } 
-        var se = document.createElement('script'); 
-        se.type = "text/javascript"; 
-        //alert("before Request undefined\n");
-        request.open("GET", url, false); 
-        request.send(null); 
-        se.text = request.responseText; 
-        document.getElementsByTagName('head')[0].appendChild(se); 
-        //alert("end of loadScript\n");
-    }
-    //loadScript("/soap/ajax/53.0/connection.js");
 
                     
     var initESW = function(gslbBaseURL) {
@@ -64,12 +44,27 @@
                     btn.addEventListener("click", function (e){
                         e.preventDefault();
                         console.log('Email Transcript Clicked');
+                        var conn = new jsforce.Connection({
+                          // you can change loginUrl to connect to sandbox or prerelease env.
+                           loginUrl : 'https://blueshieldca--itdevq4.my.salesforce.com/'
+                        });
+                        conn.login('raghav.vaidya@pwc.com.itdevq4', 'Rag@bcschat123', function(err, userInfo) {
+                          if (err) { return console.error(err); }
+                          // Now you can get the access token and instance URL information.
+                          // Save them to establish connection next time.
+                          console.log(conn.accessToken);
+                          console.log(conn.instanceUrl);
+                          // logged in user property
+                          console.log("User ID: " + userInfo.id);
+                          console.log("Org ID: " + userInfo.organizationId);
+                          // ...
+                        }); 
                         //embedded_svc.liveAgentAPI.sendCustomEvent("Customer_to_agent_event_type","data from the customer");
                         //sforce.connection.sessionId = '{!$Api.Session_ID}';
                         //console.log(sforce.connection.sessionId);
                         //var test = sforce.apex.execute("CheckEmailTranscript","checkEmailTranscript",{chatkey: data.liveAgentSessionKey});
                         //console.log(test);
-                        const formData = new FormData();
+                        /*const formData = new FormData();
                         const fileField = document.querySelector('input[type="file"]');
 
                         formData.append('username', 'abc123');
@@ -89,7 +84,7 @@
                         })
                         .catch(error => {
                           console.error('Error:', error);
-                        });
+                        });*/
                         btn.disabled = true;
                         alert("You will be emailed shortly");
                     });
