@@ -75,7 +75,7 @@
                         formData.append('username', 'abc123');
                         formData.append('avatar', fileField.files[0]);
 
-                        fetch('https://cs94.salesforce.com/services/apexrest/LiveChatTranscript', {
+                        fetch('https://cs94.salesforce.com/services/apexrest/LiveChatTranscript/CheckEmailTranscript', {
                           method: 'PUT',
                           headers: {
                             'Content-Type': 'application/json'
