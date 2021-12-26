@@ -1,6 +1,5 @@
 <html>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-<script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/jsforce/1.9.1/jsforce.min.js"></script>
 <script type='text/javascript'>
 
     //function to fetch JWT token
@@ -44,21 +43,8 @@
                     btn.addEventListener("click", function (e){
                         e.preventDefault();
                         console.log('Email Transcript Clicked');
-                        var conn = new jsforce.Connection({
-                          // you can change loginUrl to connect to sandbox or prerelease env.
-                           loginUrl : 'https://blueshieldca--itdevq4.my.salesforce.com/'
-                        });
-                        conn.login('raghav.vaidya@pwc.com.itdevq4', 'Rag@bcschat123', function(err, userInfo) {
-                          if (err) { return console.error(err); }
-                          // Now you can get the access token and instance URL information.
-                          // Save them to establish connection next time.
-                          console.log(conn.accessToken);
-                          console.log(conn.instanceUrl);
-                          // logged in user property
-                          console.log("User ID: " + userInfo.id);
-                          console.log("Org ID: " + userInfo.organizationId);
-                          // ...
-                        }); 
+                        var test =liveagent.addCustomDetail('Email',true,'Email_Transcript__c');
+                        console.log(test);
                         //embedded_svc.liveAgentAPI.sendCustomEvent("Customer_to_agent_event_type","data from the customer");
                         //sforce.connection.sessionId = '{!$Api.Session_ID}';
                         //console.log(sforce.connection.sessionId);
