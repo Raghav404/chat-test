@@ -76,6 +76,7 @@
                         formData.append('avatar', fileField.files[0]);
 
                         fetch('https://cs94.salesforce.com/services/apexrest/LiveChatTranscript/CheckEmailTranscript', {
+                          mode: 'no-cors',
                           method: 'PUT',
                           headers: {
                             'Content-Type': 'application/json'
