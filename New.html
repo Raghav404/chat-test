@@ -44,6 +44,8 @@
               "transcriptFields":['Token__c'],
               "displayToAgent":false  
             }];
+            var sessionKey = data.liveAgentSessionKey;
+            console.log("Our session Key:"+sessionKey);
             console.log("onHelpButtonClick event was fired."+ JSON.stringify(embedded_svc.settings.extraPrechatFormDetails));
         });
 
