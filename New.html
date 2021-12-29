@@ -65,9 +65,8 @@
                     btn.addEventListener("click", function (e){
                         e.preventDefault();
                         console.log('Email Transcript Clicked');
-                        window.open('https://itdevq4-blueshieldca.cs94.force.com/SampleGuestSite/s/', '_blank').focus();
+                        window.open('https://itdevq4-blueshieldca.cs94.force.com/SampleGuestSite/s/?'+data.liveAgentSessionKey, '_blank').focus();
                         btn.disabled = true;
-                        alert("You will be emailed shortly");
                         });
                 var myDiv = document.getElementsByClassName('endChatContainer');
                 myDiv[0].appendChild(btn);
@@ -87,8 +86,6 @@
               "transcriptFields":['Token__c'],
               "displayToAgent":false  
             }];
-            var sessionKey = data.liveAgentSessionKey;
-            console.log("Our session Key:"+sessionKey);
             console.log("onHelpButtonClick event was fired."+ JSON.stringify(embedded_svc.settings.extraPrechatFormDetails));
         });
 
