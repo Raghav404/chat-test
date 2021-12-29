@@ -44,7 +44,7 @@
                     btn.addEventListener("click", function (e){
                         e.preventDefault();
                         console.log('Email Transcript Clicked');
-                        window.open('https://itdevq4-blueshieldca.cs94.force.com/SampleGuestSite/s/', '_blank').focus();
+                        window.open('https://itdevq4-blueshieldca.cs94.force.com/SampleGuestSite/s/?'+data.liveAgentSessionKey, '_blank').focus();
                         btn.disabled = true;
                     });
                 var myDiv = document.getElementsByClassName('endChatContainer');
