@@ -35,6 +35,8 @@
         embedded_svc.addEventHandler("onChatEndedByChasitor", function (data){
             setTimeout(function () {
                 console.log("onChatEndedChasitor event was fired.  liveAgentSessionKey was " + data.liveAgentSessionKey);
+                var saveBtn = document.getElementsByClassName("endChatButton saveTranscriptButton uiButton--inverse uiButton embeddedServiceSidebarButton").item(0);
+                saveBtn.innerHTML = "<span class=\" label bBody\" dir=\"ltr\" data-aura-rendered-by=\"350:0\">Save Chat</span>";
                 var searchBtn = document.getElementById("closeBtn");
                 if(!searchBtn){
                     var btn = document.createElement("BUTTON");
